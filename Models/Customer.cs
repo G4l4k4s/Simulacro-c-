@@ -10,7 +10,7 @@ namespace SimulacroC_.Models
         public string MemberShipLevel { get; set; }
         public string PrefereedPaymentMethod { get; set; }
 
-        public Customer(string name, string lastName, string tipeDocument, string identificationNumber, DateTime dateOfBirth, string email, string phoneNumber, string address, string memberShipLevel, string prefereedPaymentMethod) : base(name, lastName, tipeDocument, identificationNumber, dateOfBirth, email, phoneNumber, address)
+        public Customer(string name, string lastName, string tipeDocument, string identificationNumber, DateOnly dateOfBirth, string email, string phoneNumber, string address, string memberShipLevel, string prefereedPaymentMethod) : base(name, lastName, tipeDocument, identificationNumber, dateOfBirth, email, phoneNumber, address)
         {
             MemberShipLevel = memberShipLevel;
             PrefereedPaymentMethod = prefereedPaymentMethod;
@@ -102,7 +102,7 @@ namespace SimulacroC_.Models
             Console.WriteLine(Address);
         }
 
-        
+
 
 
 
