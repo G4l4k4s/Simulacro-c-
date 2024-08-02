@@ -33,8 +33,10 @@ namespace SimulacroC_.Models
 
         protected virtual string ShowDetails()
         {
-            return $"{Name} {LastName}";
+            return $"Id: {userId}, Name: {Name}, Last Name: {LastName}, Tipe Document: {TipeDocument}, Identification Number: {IdentificationNumber}, Date of Birth: {DateOfBirth.ToString("dd/MM/yyyy")}, Email: {Email}, Phone Number: {PhoneNumber}, Address: {Address}";
         }
+
+        
 
         protected virtual int CalculateAge()
         {
@@ -49,6 +51,47 @@ namespace SimulacroC_.Models
             return CalculateAge();
         }
 
+        protected Guid id()
+        {
+            return userId;
+        }
 
+        protected string NameReturned()
+        {
+            return Name;
+        }
+        protected string LastNameReturned()
+        {
+            return LastName;
+        }
+        protected string EmailReturned()
+        {
+            return Email;
+        }
+        protected string PhoneNumberReturned()
+        {
+            return PhoneNumber;
+        }
+        protected string DirectionReturned()
+        {
+            return Address;
+        }
+        protected int AgeReturned()
+        {
+            return ShowAge();
+        }
+        protected string typeDocumentReturned()
+        {
+            return TipeDocument;
+        }
+        protected DateOnly dateOfBirth()
+        {
+            return DateOfBirth;
+        }
+        
+        protected string numerodocumento()
+        {
+            return IdentificationNumber;
+        }
     }
 }

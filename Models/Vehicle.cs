@@ -5,31 +5,38 @@ using System.Threading.Tasks;
 
 namespace SimulacroC_.Models
 {
-    public class Vehicle
+    public class Vehicle 
     {
         public int Id { get; set; }
         public string Placa { get; set; }
-        public string Tipo { get; set; }
+        public string Type { get; set; }
         public string EngineNumber { get; set; }
         public string SerialNumber { get; set; }
-        public byte PeopleCapacity { get; set; }
-        public string Owner { get; set; }
+        public int PeopleCapacity { get; set; }
+        public Driver Owner { get; set; }
 
 
-        public Vehicle(int id, string placa, string tipo, string engineNumber, string serialNumber, byte peopleCapacity, string owner)
+        public Vehicle(int id, string placa, string type, string engineNumber, string serialNumber, int peopleCapacity, Driver owner)
         {
             Id = id;
             Placa = placa;
-            Tipo = tipo;
+            Type = type;
             EngineNumber = engineNumber;
             SerialNumber = serialNumber;
             PeopleCapacity = peopleCapacity;
             Owner = owner;
         }
-
-        public void DeleteVehicle(string placa)
+        public void DeleteVehicle()
         {
-            Console.WriteLine($"Vehicle with placa {Placa} has been deleted.");
+            Console.WriteLine("Write de placa of the vehicle what you want to delete");
+            var placa = Console.ReadLine();
+            Library.Vehicles.RemoveAll(a => a.Placa == placa);
+            Console.WriteLine($"Vehicle with placa {placa} has been deleted.");
+        }
+
+        public static Driver Qwqeq(string s)
+        {
+            return Library.Drivers.FirstOrDefault(x => x.GetIdentificationNumber() == s);
         }
     }
 }

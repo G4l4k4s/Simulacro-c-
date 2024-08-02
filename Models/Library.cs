@@ -5,24 +5,21 @@ using System.Threading.Tasks;
 
 namespace SimulacroC_.Models
 {
-    public class Library
+    public static class Library
     {
-        public List<Vehicle> Vehicles { get; set; }
-        public List<Driver> Drivers { get; set; }
-        public List<Customer> Customers { get; set; }
-
-
-        public Library()
-        {
-            Vehicles = new List<Vehicle>();
-            Drivers = new List<Driver>();
-            Customers = new List<Customer>();
-        }
+        public static List<Vehicle> Vehicles { get; set; }
+        public static List<Driver> Drivers { get; set; }
+        public static List<Customer> Customers { get; set; }
 
 
 
 
-        public void AddVehicle()
+        
+
+
+
+
+        public static void AddVehicle()
         {
             Console.Clear();
             Console.WriteLine("Write the vehicle's Id:");
@@ -35,16 +32,25 @@ namespace SimulacroC_.Models
             var EngineNumber = Console.ReadLine();
             Console.WriteLine("Write the vehicle's serial number:");
             var SerialNumber = Console.ReadLine();
-            Console.WriteLine("Write the vehicle's people capacity id:");
-            var PeopleCapacity = Convert.ToByte(Console.ReadLine());
-            Console.WriteLine("the vehicle's people capacity id:");
-            Console.WriteLine("Write the vehicle's owner:");
-            var Owner = Console.ReadLine();
-            var vehicle = new Vehicle(Id, Placa, Type, EngineNumber, SerialNumber, PeopleCapacity, Owner);
+            //
+            int numero;
+            if(!int.TryParse(Console.ReadLine(), out numero)){
+                Console.WriteLine("Invalid input. Please enter a number.");
+                return;
+            }
+            int numerovall = Validations.ValidateCapacity(numero);
+
+            //
+            Console.WriteLine("the vehicle's people capacity identification:");
+            string indent = Console.ReadLine();
+            var driver = Vehicle.Qwqeq(indent);
+            
+
+            var vehicle = new Vehicle(Id, Placa, Type, EngineNumber, SerialNumber,numerovall, driver);
             Vehicles.Add(vehicle);
 
         }
-        public void AddDriver()
+        public static void AddDriver()
         {
             Console.Clear();
             Console.WriteLine("Write the driver's name:");
@@ -78,77 +84,49 @@ namespace SimulacroC_.Models
             var newDriver = new Driver(Name, LastName, DocumentType, DocumentNumber, newDate, Email, PhoneNumber, Address, LicenseNumber, LicenseCategory, DrivingExperience);
             Drivers.Add(newDriver);
         }
-        // public void AddCustomer(Customer customer)
-        // {
-        //     Customers.Add(customer);
-        // }
-        // public void DeleteVehicle(string placa)
-        // {
-        //     Vehicles.RemoveAll(v => v.Placa == placa);
-        // }
-        // public void DeleteDriver(string identificationNumber)
-        // {
-        //     // Drivers.RemoveAll(d => d.IdentificationNumber() == identificationNumber);
-        // }
-        // public void DeleteCustomer(string identificationNumber)
-        // {
-        //     // Customers.RemoveAll(c => c.IdentificationNumber == identificationNumber);
-        // }
-        // public void UpdateVehicle(string placa, string newPlaca, int newPeopleCapacity, string newOwner)
-        // {
-        //     // Vehicle vehicleToUpdate = Vehicles.FirstOrDefault(v => v.Placa == placa);
-        //     // if (vehicleToUpdate != null)
-        //     // {
-        //     //     vehicleToUpdate.Placa = newPlaca;
-        //     //     vehicleToUpdate.PeopleCapacity = newPeopleCapacity.ToString();
-        //     //     vehicleToUpdate.Owner = newOwner;
-        //     // }
+        public static void AddCustomer( )
+        {
+            Console.Clear();
+            Console.WriteLine("Write the customer's name:");
+            var Name = Console.ReadLine();
+            Console.WriteLine("Write the customer's lastname:");
+            var LastName = Console.ReadLine();
+            Console.WriteLine("What is the document type of the customer?:");
+            var DocumentType = Console.ReadLine();
+            Console.WriteLine("Write the customer's document number:");
+            var DocumentNumber = Console.ReadLine();
+            Console.WriteLine("place the customer's birthtime");
+            Console.WriteLine("Write the year of birth: ");
+            var inputYYYY = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Write the month:");
+            var inputMM = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("Write the day of birth:");
+            var inputDD = Convert.ToInt16(Console.ReadLine());
+            var newDate = new DateOnly(inputYYYY, inputMM, inputDD);
+            Console.WriteLine(" Write the   customer's  email address:");
+            var Email = Console.ReadLine();
+            Console.WriteLine("Write the customer's phone number:");
+            var PhoneNumber = Console.ReadLine();
+            Console.WriteLine("Write the customer's address:");
+            var Address = Console.ReadLine();
+            Console.WriteLine("Write the customer's membership level:");
+            var MemberShipLevel = Console.ReadLine();
+            Console.WriteLine("Write the customer's preferred payment method:");
+            var PreferredPaymentMethod = Console.ReadLine();
+            var newCustomer = new Customer(Name, LastName, DocumentType, DocumentNumber, newDate, Email, PhoneNumber, Address, MemberShipLevel, PreferredPaymentMethod);
+            Customers.Add(newCustomer);
+        }
 
-        // }
-        // public void UpdateDriver(string identificationNumber, string newLicenseNumber, string newLicenseCategory, int newDrivingExperience)
-        // {
-        //     Driver driverToUpdate = Drivers.FirstOrDefault(d => d.IdentificationNumber == identificationNumber);
-        //     if (driverToUpdate != null)
-        //     {
-        //         driverToUpdate.LicenseNumber = newLicenseNumber;
-        //         driverToUpdate.LicenseCategory = newLicenseCategory;
-        //         driverToUpdate.DrivingExperience = newDrivingExperience;
-        //     }
+        public static void ShowAllVehicles()
+        {   
+            Console.Clear();
+            Console.WriteLine("Vehicles:");
+            foreach (var vehicle in Vehicles)
+            {
+                Console.WriteLine($"Id: {vehicle.Id}, Placa: {vehicle.Placa}, Tipe: {vehicle.Type}, Engine number: {vehicle.EngineNumber}, Serial number: {vehicle.SerialNumber}, People capacity: {vehicle.PeopleCapacity}, Driver: {Vehicle.Qwqeq}");
+            }
+        }
 
-        // }
-        // public void UpdateCustomer(string identificationNumber, string newMemberShipLevel, string newPrefereedPaymentMethod)
-        // {
-        //     Customer customerToUpdate = Customers.FirstOrDefault(c => c.IdentificationNumber == identificationNumber);
-        //     if (customerToUpdate != null)
-        //     {
-        //         customerToUpdate.MemberShipLevel = newMemberShipLevel;
-        //         customerToUpdate.PrefereedPaymentMethod = newPrefereedPaymentMethod;
-        //     }
-        // }
-
-    //     public Vehicle GetVehicleByPlaca(string placa)
-    //     {
-    //         return Vehicles.FirstOrDefault(v => v.Placa == placa);
-    //     }
-
-    //     // public Driver GetDriverByIdentificationNumber(string identificationNumber)
-    //     // {
-    //     //     return Drivers.FirstOrDefault(d => d.IdentificationNumber == identificationNumber);
-    //     // }
-
-    //     // public Customer GetCustomerByIdentificationNumber(string identificationNumber)
-    //     // {
-    //     //     return Customers.FirstOrDefault(c => c.IdentificationNumber == identificationNumber);
-    //     // }
-    //     public List<Vehicle> GetVehiclesByOwner(string owner)
-    //     {
-    //         return Vehicles.Where(v => v.Owner == owner).ToList();
-    //     }
-
-    //     public List<Driver> GetDriversByLicenseCategory(string licenseCategory)
-    //     {
-    //         return Drivers.Where(d => d.LicenseCategory == licenseCategory).ToList();
-    //     }
     }
 }
 

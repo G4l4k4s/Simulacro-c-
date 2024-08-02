@@ -19,7 +19,7 @@ namespace SimulacroC_.Models
             DrivingExperience = drivingExperience;
         }
 
-        public void UpdateLicenseCategory(String newCategory)
+        public void UpdateLicenseCategory()
         {
             // Update license category based on driving experience
             // Example: Implement a rule-based system or machine learning algorithm
@@ -40,9 +40,23 @@ namespace SimulacroC_.Models
             }
         }
 
-        public void AddExperience(int years)
+        public void AddExperience()
         {
+            // Add experience to the driver's driving experience
+            // Example: Implement a rule-based system or machine learning algorithm
+            // to determine the additional experience the driver should receive
+            // and update the DrivingExperience property accordingly
+            // ...
+            // Implement your experience logic here
+            // ...
+            // Example:
 
+            DrivingExperience += 1;
+            UpdateLicenseCategory();
+            Console.WriteLine($"Driver {Name} {LastName} has been updated. Driving experience: {DrivingExperience}");
+            Console.WriteLine($"License Category: {LicenseCategory}");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         public void SetName(string name)
@@ -73,9 +87,9 @@ namespace SimulacroC_.Models
             IdentificationNumber = identificationNumber;
         }
 
-        public void GetIdentificationNumber()
+        public string GetIdentificationNumber()
         {
-            var identifier = IdentificationNumber;
+            return base.numerodocumento();
         }
 
         public void SetEmail(string email)
