@@ -64,22 +64,29 @@ namespace SimulacroC_.Models
             Name = name;
         }
 
-        public void GetName()
+        public string GetName()
         {
-            Name = Name.ToLower();
-            Console.WriteLine(Name);
-
+            return base.NameReturned();
         }
 
-        public void SetLastName(string lastName)
+        public string SetLastName(string lastName)
         {
-            LastName = lastName;
+            return base.LastNameReturned();
         }
 
-        public void GetLastName()
+        public string GetDocumentTipe()
         {
-            LastName = LastName.ToUpper();
-            Console.WriteLine(LastName);
+            return base.typeDocumentReturned();
+        }
+
+        public string GetLastName()
+        {
+            return base.LastNameReturned();
+        }
+
+        public DateOnly GetBirthDay()
+        {
+            return base.dateOfBirth();
         }
 
         public void SetIdentificationNumber(string identificationNumber)
@@ -89,7 +96,7 @@ namespace SimulacroC_.Models
 
         public string GetIdentificationNumber()
         {
-            return base.numerodocumento();
+            return base.numeroDocumento();
         }
 
         public void SetEmail(string email)
@@ -97,9 +104,9 @@ namespace SimulacroC_.Models
             Email = email;
         }
 
-        public void GetEmail()
+        public string GetEmail()
         {
-            Console.WriteLine(Email);
+            return base.EmailReturned();
         }
 
         public void SetPhoneNumber(string phoneNumber)
@@ -107,9 +114,9 @@ namespace SimulacroC_.Models
             PhoneNumber = phoneNumber;
         }
 
-        public void GetPhoneNumber()
+        public string GetPhoneNumber()
         {
-            Console.WriteLine(PhoneNumber);
+            return base.PhoneNumberReturned();
         }
 
         public void SetAddress(string address)
@@ -117,15 +124,9 @@ namespace SimulacroC_.Models
             Address = address;
         }   
 
-        public void GetAddress()
+        public string GetAddress()
         {
-            Console.WriteLine(Address);
+            return base.AdreessReturned();
         }
-
-
-
-
-
-
     }
 }

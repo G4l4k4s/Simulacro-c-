@@ -89,9 +89,14 @@ namespace SimulacroC_.Models
             return DateOfBirth;
         }
         
-        protected string numerodocumento()
+        protected string numeroDocumento()
         {
             return IdentificationNumber;
+        }
+
+        protected string AdreessReturned()
+        {
+            return Address;
         }
     }
 }

@@ -11,12 +11,7 @@ namespace SimulacroC_.Models
         public static List<Driver> Drivers { get; set; }
         public static List<Customer> Customers { get; set; }
 
-
-
-
         
-
-
 
 
         public static void AddVehicle()
@@ -121,11 +116,28 @@ namespace SimulacroC_.Models
         {   
             Console.Clear();
             Console.WriteLine("Vehicles:");
-            foreach (var vehicle in Vehicles)
+            Console.WriteLine("hola mundo");
+            foreach (var item in Vehicles)
             {
-                Console.WriteLine($"Id: {vehicle.Id}, Placa: {vehicle.Placa}, Tipe: {vehicle.Type}, Engine number: {vehicle.EngineNumber}, Serial number: {vehicle.SerialNumber}, People capacity: {vehicle.PeopleCapacity}, Driver: {Vehicle.Qwqeq}");
+                Console.WriteLine($"Id: {item.Id}, Placa: {item.Placa}, Type: {item.Type}, Engine Number: {item.EngineNumber}, Serial Number: {item.SerialNumber}, People Capacity: {item.PeopleCapacity}, Driver: {Vehicle.Qwqeq}");
             }
+            Console.ReadKey();
+
         }
+
+        public static void ShowAllDrivers()
+        {
+            Console.Clear();
+            Console.WriteLine("Drivers:");
+            foreach (var item in Drivers)
+            {
+                Console.WriteLine($"Name: {item.GetName()}\n Last Name: {item.GetLastName()}\n Document Type: {item.GetDocumentTipe()}\n Document Number: {item.GetIdentificationNumber()}\n Birth Date: {item.GetBirthDay()}\n Email: {item.GetEmail()}\n Phone Number: {item.GetPhoneNumber()}\n Address: {item.GetAddress()}\n License Number: {item.LicenseNumber}\n License Category: {item.LicenseCategory}\n Driving Experience: {item.DrivingExperience}");
+                Console.WriteLine();
+            }
+            Console.ReadKey();
+        }
+
+
 
     }
 }
