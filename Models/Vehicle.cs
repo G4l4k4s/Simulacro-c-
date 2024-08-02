@@ -34,9 +34,9 @@ namespace SimulacroC_.Models
             Console.WriteLine($"Vehicle with placa {placa} has been deleted.");
         }
 
-        public static Driver Qwqeq(string s)
+        public static Driver Qwqeq(string GetName)
         {
-            return Library.Drivers.FirstOrDefault(x => x.GetIdentificationNumber() == s);
+            return Library.Drivers.FirstOrDefault(x => x.GetIdentificationNumber() == GetName);
         }
     }
 }

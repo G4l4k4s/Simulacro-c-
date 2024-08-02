@@ -12,7 +12,7 @@ Library.Drivers = new List<Driver>();
 Library.Vehicles = new List<Vehicle>();
 //    ----------------------------------------------------------------
 
-        Driver driver1 = new Driver("juan", "perez", "CC", "123456789", new DateOnly(1994, 5, 15), "conductor@gmail.com", "123456", "cas 222", "12312424", "a2", 3);
+    Driver driver1 = new Driver("juan", "perez", "CC", "123456789", new DateOnly(1994, 5, 15), "conductor@gmail.com", "123456", "cas 222", "12312424", "a2", 3);
     Driver driver2 = new Driver("pedro", "gonzales", "CC", "987654321", new DateOnly(1990, 10, 25), "conductor@gmail.com", "987654", "calle 111", "12312312", "a1", 5);
     Driver driver3 = new Driver("luis", "martinez", "CC", "345678901", new DateOnly(1988, 7, 10), "conductor@gmail.com", "345678", "avenida 333", "12312313", "a3", 7);
 
@@ -48,15 +48,10 @@ while (While)
     Insterface.Header();
     Console.WriteLine("Welcome to Simulacro");
     Console.WriteLine("What you gonna do?");
-    Console.WriteLine("1. Add a new Driver?");
-    Console.WriteLine("2. Eliminar empleado");
-    Console.WriteLine("3. Mostrar todos los empleados");
-    Console.WriteLine("4. Actualizar empleado");
-    Console.WriteLine("5. Buscar empleado por CC");
-    Console.WriteLine("6. Mostrar empleados por cargo");
-    Console.WriteLine("7. Agregar cliente");
-    Console.WriteLine("8. Mostrar todos los cliente");
-    Console.WriteLine("9. Eliminar clientes");
+    Console.WriteLine("1. Show vehicle List");
+    Console.WriteLine("2. show driver List");
+    Console.WriteLine("3. create new driver");
+    Console.WriteLine("4. create new vehicle");
 
     var options = Console.ReadLine();
     switch (options.ToLower())
@@ -71,6 +66,9 @@ while (While)
             break;
         case "3":
             Library.AddDriver();
+            break;
+        case "4":
+            Library.AddVehicle();
             break;
 
         

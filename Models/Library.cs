@@ -28,6 +28,7 @@ namespace SimulacroC_.Models
             Console.WriteLine("Write the vehicle's serial number:");
             var SerialNumber = Console.ReadLine();
             //
+            Console.WriteLine("Write the vehicle's capacity:");
             int numero;
             if(!int.TryParse(Console.ReadLine(), out numero)){
                 Console.WriteLine("Invalid input. Please enter a number.");
@@ -41,11 +42,11 @@ namespace SimulacroC_.Models
             var driver = Vehicle.Qwqeq(indent);
             
 
-            var vehicle = new Vehicle(Id, Placa, Type, EngineNumber, SerialNumber,numerovall, driver);
+            var vehicle = new Vehicle(Id, Placa, Type, EngineNumber, SerialNumber,numerovall, AddDriver());
             Vehicles.Add(vehicle);
 
         }
-        public static void AddDriver()
+        public static Driver AddDriver()
         {
             Console.Clear();
             Console.WriteLine("Write the driver's name:");
@@ -78,6 +79,8 @@ namespace SimulacroC_.Models
             var DrivingExperience = Convert.ToInt32(Console.ReadLine());
             var newDriver = new Driver(Name, LastName, DocumentType, DocumentNumber, newDate, Email, PhoneNumber, Address, LicenseNumber, LicenseCategory, DrivingExperience);
             Drivers.Add(newDriver);
+
+            return newDriver;
         }
         public static void AddCustomer( )
         {
@@ -114,12 +117,14 @@ namespace SimulacroC_.Models
 
         public static void ShowAllVehicles()
         {   
+
             Console.Clear();
             Console.WriteLine("Vehicles:");
             Console.WriteLine("hola mundo");
             foreach (var item in Vehicles)
             {
-                Console.WriteLine($"Id: {item.Id}, Placa: {item.Placa}, Type: {item.Type}, Engine Number: {item.EngineNumber}, Serial Number: {item.SerialNumber}, People Capacity: {item.PeopleCapacity}, Driver: {Vehicle.Qwqeq}");
+                Console.WriteLine($"Id: {item.Id}\n Placa: {item.Placa}\n Type: {item.Type}\n Engine Number: {item.EngineNumber}\n Serial Number: {item.SerialNumber}\n People Capacity: {item.PeopleCapacity}\n Driver: {item.Owner.GetName()}");
+                Console.WriteLine();
             }
             Console.ReadKey();
 
