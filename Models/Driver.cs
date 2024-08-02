@@ -1,43 +1,48 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace SimulacroC_.Models
 {
-    public class Customer : User
+    public class Driver : User
     {
-        public string MemberShipLevel { get; set; }
-        public string PrefereedPaymentMethod { get; set; }
+        public string LicenseNumber { get; set; }
+        public string LicenseCategory { get; set; }
+        public int DrivingExperience { get; set; }
 
-        public Customer(string name, string lastName, string tipeDocument, string identificationNumber, DateTime dateOfBirth, string email, string phoneNumber, string address, string memberShipLevel, string prefereedPaymentMethod) : base(name, lastName, tipeDocument, identificationNumber, dateOfBirth, email, phoneNumber, address)
+        public Driver(string name, string lastName, string tipeDocument, string identificationNumber, DateTime dateOfBirth, string email, string phoneNumber, string address, string licenseNumber, string licenseCategory, int drivingExperience) : base(name, lastName, tipeDocument, identificationNumber, dateOfBirth, email, phoneNumber, address)
         {
-            MemberShipLevel = memberShipLevel;
-            PrefereedPaymentMethod = prefereedPaymentMethod;
+            LicenseNumber = licenseNumber;
+            LicenseCategory = licenseCategory;
+            DrivingExperience = drivingExperience;
         }
 
-        public void UpdateMembershipLevel()
+        public void UpdateLicenseCategory(String newCategory)
         {
-            // Update membership level based on customer behavior and preferences
+            // Update license category based on driving experience
             // Example: Implement a rule-based system or machine learning algorithm
-            // to determine the most suitable membership level for the customer
-            // and update the MemberhipLevel property accordingly
+            // to determine the most suitable license category for the driver
+            // and update the LicenseCategory property accordingly
             // ...
-            // Implement your membership level logic here
+            // Implement your license category logic here
             // ...
             // Example:
-            if (PrefereedPaymentMethod == "Credit Card")
+
+            if (DrivingExperience >= 10)
             {
-                MemberShipLevel = "Gold";
+                LicenseCategory = "Class A";
             }
-            else if (PrefereedPaymentMethod == "PayPal")
+            else if (DrivingExperience >= 5)
             {
-                MemberShipLevel = "Platinum";
+                LicenseCategory = "Class B";
             }
-            else
-            {
-                MemberShipLevel = "Standard";
-            }
+        }
+
+        public void AddExperience(int years)
+        {
+
         }
 
         public void SetName(string name)
@@ -47,8 +52,9 @@ namespace SimulacroC_.Models
 
         public void GetName()
         {
-            Name = Name.ToUpper();
+            Name = Name.ToLower();
             Console.WriteLine(Name);
+
         }
 
         public void SetLastName(string lastName)
@@ -58,7 +64,7 @@ namespace SimulacroC_.Models
 
         public void GetLastName()
         {
-            LastName = LastName.ToLower();
+            LastName = LastName.ToUpper();
             Console.WriteLine(LastName);
         }
 
@@ -69,7 +75,7 @@ namespace SimulacroC_.Models
 
         public void GetIdentificationNumber()
         {
-            Console.WriteLine(IdentificationNumber);
+            var identifier = IdentificationNumber;
         }
 
         public void SetEmail(string email)
@@ -95,14 +101,14 @@ namespace SimulacroC_.Models
         public void SetAddress(string address)
         {
             Address = address;
-        }
+        }   
 
         public void GetAddress()
         {
             Console.WriteLine(Address);
         }
 
-        
+
 
 
 
